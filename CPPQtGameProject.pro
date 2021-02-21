@@ -11,14 +11,15 @@ CONFIG += c++11
 SOURCES += \
     Player.cpp \
     entity.cpp \
+    item.cpp \
     main.cpp \
-    monster.cpp \
+
     widget.cpp
 
 HEADERS += \
     Player.h \
     entity.h \
-    monster.h \
+
     widget.h
 
 FORMS += \
