@@ -13,16 +13,13 @@ SOURCES += \
     entity.cpp \
     item.cpp \
     main.cpp \
-    npc.cpp \
-    projectile.cpp \
+
     widget.cpp
 
 HEADERS += \
     Player.h \
     entity.h \
-    item.h \
-    npc.h \
-    projectile.h \
+
     widget.h
 
 FORMS += \
