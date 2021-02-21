@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     Player.cpp \
+    entity.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     Player.h \
+    entity.h \
     widget.h
 
 FORMS += \

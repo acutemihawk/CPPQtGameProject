@@ -31,18 +31,24 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 void Player::slotGameTimer()
 {
     if(GetAsyncKeyState(VK_LEFT)){
-        angle -= 10;
+        angle = -90;
         setRotation(angle);
+        setPos(mapToParent(0, -5));
     }
     if(GetAsyncKeyState(VK_RIGHT)){
-        angle += 10;
+        angle = 90;
         setRotation(angle);
+        setPos(mapToParent(0, -5));
     }
     if(GetAsyncKeyState(VK_UP)){
+        angle = 0;
+        setRotation(angle);
         setPos(mapToParent(0, -5));
     }
     if(GetAsyncKeyState(VK_DOWN)){
-        setPos(mapToParent(0, 5));
+        angle = 180;
+        setRotation(angle);
+        setPos(mapToParent(0, -5));
     }
 
     if(this->x() - 10 < -250){
