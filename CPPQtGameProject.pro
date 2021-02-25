@@ -10,12 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     entity.cpp \
+    game.cpp \
     main.cpp \
+    player.cpp
 
     widget.cpp
 
 HEADERS += \
     entity.h \
+    game.h \
+    player.h
 
     widget.h
 
