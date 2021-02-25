@@ -44,4 +44,5 @@ void Player::movePlayer()
     {
         setPos(x(), y()+20);
     }
+
 }
