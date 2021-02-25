@@ -9,21 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Player.cpp \
     entity.cpp \
-    item.cpp \
     main.cpp \
 
     widget.cpp
 
 HEADERS += \
-    Player.h \
     entity.h \
 
     widget.h
 
-FORMS += \
-    widget.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
