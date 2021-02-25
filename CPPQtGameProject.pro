@@ -12,13 +12,11 @@ SOURCES += \
     entity.cpp \
     game.cpp \
     main.cpp \
-    monster.cpp \
     player.cpp
 
 HEADERS += \
     entity.h \
     game.h \
-    monster.h \
     player.h
 
 FORMS +=

@@ -1,10 +1,14 @@
 #include "player.h"
+#include <QGraphicsScene>
+#include <QKeyEvent>
 
-Player::Player()
+Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 {
-    setRect(0,0,10,50);
+    //setRect(0,0,10,50);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
+
+    setPixmap(QPixmap(":/ressources/images/Walking1.png"));
 }
 
 Player::~Player()
