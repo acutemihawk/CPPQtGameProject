@@ -1,10 +1,10 @@
-#include "player.h"
+#include "Player.h"
 
-Player::Player()
+Player::Player(QObject *parent) :
+    QObject(parent), QGraphicsItem()
 {
-    setRect(0,0,10,50);
-    setFlag(QGraphicsItem::ItemIsFocusable);
-    setFocus();
+    angle = 0;
+    setRotation(angle);
 }
 
 Player::~Player()
@@ -12,37 +12,56 @@ Player::~Player()
 
 }
 
-void Player::keyPressEvent(QKeyEvent *event)
+QRectF Player::boundingRect() const
 {
-    keys[event->key()] = true;
-    movePlayer();
+    return QRectF(-25,-40,50,80);
 }
 
-void Player::keyReleaseEvent(QKeyEvent *event)
+void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    keys[event->key()] = false;
+        QPolygon polygon;
+
+        polygon << QPoint(0,-40) << QPoint(25,40) << QPoint(-25,40);
+        painter->setBrush(Qt::red);
+        painter->drawPolygon(polygon);
+        Q_UNUSED(option);
+        Q_UNUSED(widget);
 }
 
-void Player::movePlayer()
+void Player::slotGameTimer()
 {
-    if(keys[68] == true) // key D
-    {
-        setPos(x()+20, y());
+    if(GetAsyncKeyState(VK_LEFT)){
+        angle = -90;
+        setRotation(angle);
+        setPos(mapToParent(0, -5));
+    }
+    if(GetAsyncKeyState(VK_RIGHT)){
+        angle = 90;
+        setRotation(angle);
+        setPos(mapToParent(0, -5));
+    }
+    if(GetAsyncKeyState(VK_UP)){
+        angle = 0;
+        setRotation(angle);
+        setPos(mapToParent(0, -5));
+    }
+    if(GetAsyncKeyState(VK_DOWN)){
+        angle = 180;
+        setRotation(angle);
+        setPos(mapToParent(0, -5));
     }
 
-    if(keys[81] == true) // key Q
-    {
-        setPos(x()-20, y());
+    if(this->x() - 10 < -250){
+        this->setX(-240);       // left
+    }
+    if(this->x() + 10 > 250){
+        this->setX(240);        // right
     }
 
-    if(keys[90] == true) // key Z
-    {
-        setPos(x(), y()-20);
+    if(this->y() - 10 < -250){
+        this->setY(-240);       // top
     }
-
-    if(keys[83] == true) // key S
-    {
-        setPos(x(), y()+20);
+    if(this->y() + 10 > 250){
+        this->setY(240);        // bottom
     }
-
 }
