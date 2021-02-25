@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-    setRect(0,0,10,50);
+    setPixmap(QPixmap(":/ressources/prites/Tiny16MaleSprites.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
 }
