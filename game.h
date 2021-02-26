@@ -3,6 +3,8 @@
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
+
+#include <QImage>
 #include "player.h"
 
 class Game

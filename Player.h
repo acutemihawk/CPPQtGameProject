@@ -4,13 +4,11 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QMap>
-#include <QObject>
 
-class Player:public QObject, public QGraphicsPixmapItem
+class Player: public QGraphicsPixmapItem
 {
-        //Q_OBJECT
     public:
-        Player(QGraphicsItem * parent=0);
+        Player();
         ~Player();
         void keyPressEvent(QKeyEvent * event);
         void keyReleaseEvent(QKeyEvent *event);

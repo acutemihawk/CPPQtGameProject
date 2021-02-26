@@ -14,10 +14,11 @@ Game::~Game()
 
 void Game::startGame()
 {
+    view->setBackgroundBrush(QBrush(QImage(":/sprites/bg.png")));
     view->setScene(scene);
     view->setWindowTitle("Zeldo");
+    view->setFixedSize(1280, 720);
     view->show();
-    view->resize(500,500);
 
     Player *player = new Player();
 
