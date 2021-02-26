@@ -15,6 +15,7 @@ class Player: public QGraphicsPixmapItem
         void movePlayer();
     private:
         QMap<int, bool> keys;
+        int forwardIterator = 1;
 
 };
 

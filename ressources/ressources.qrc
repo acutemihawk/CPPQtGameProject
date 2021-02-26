@@ -1,5 +1,21 @@
 <RCC>
     <qresource prefix="/sprites">
-        <file>Tiny16MaleSprites.png</file>
+        <file>bg.png</file>
+        <file>devant1.png</file>
+        <file>devant2.png</file>
+        <file>devant3.png</file>
+        <file>devant4.png</file>
+        <file>derriere1.png</file>
+        <file>derriere2.png</file>
+        <file>derriere3.png</file>
+        <file>derriere4.png</file>
+        <file>droite1.png</file>
+        <file>droite2.png</file>
+        <file>droite3.png</file>
+        <file>droite4.png</file>
+        <file>gauche1.png</file>
+        <file>gauche2.png</file>
+        <file>gauche3.png</file>
+        <file>gauche4.png</file>
     </qresource>
 </RCC>

@@ -2,9 +2,11 @@
 
 Player::Player()
 {
-    setPixmap(QPixmap(":/ressources/prites/Tiny16MaleSprites.png"));
+    setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
+
+
 }
 
 Player::~Player()
@@ -27,22 +29,26 @@ void Player::movePlayer()
 {
     if(keys[68] == true) // key D
     {
-        setPos(x()+20, y());
+        setPixmap(QPixmap(":/sprites/droite1.png"));
+        setPos(x()+10, y());
     }
 
     if(keys[81] == true) // key Q
     {
-        setPos(x()-20, y());
+        setPixmap(QPixmap(":/sprites/gauche1.png"));
+        setPos(x()-10, y());
     }
 
     if(keys[90] == true) // key Z
     {
-        setPos(x(), y()-20);
+        setPixmap(QPixmap(":/sprites/derriere1.png"));
+        setPos(x(), y()-10);
     }
 
     if(keys[83] == true) // key S
     {
-        setPos(x(), y()+20);
+        setPixmap(QPixmap(":/sprites/devant1.png"));
+        setPos(x(), y()+10);
     }
 
 }
