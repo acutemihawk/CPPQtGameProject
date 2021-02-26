@@ -40,7 +40,7 @@ void Player::movePlayer()
             setPos(x()+10, y());
         }
         else{
-            if(x() > xCollision){
+            if(x() > xCollision - 5){
                 setPixmap(QPixmap(":/sprites/droite1.png"));
                 setPos(x()+10, y());
             }
@@ -57,7 +57,7 @@ void Player::movePlayer()
             setPos(x()-10, y());
         }
         else{
-            if(x() < xCollision){
+            if(x() - 5 < xCollision){
                 setPixmap(QPixmap(":/sprites/gauche1.png"));
                 setPos(x()-10, y());
             }
@@ -75,7 +75,7 @@ void Player::movePlayer()
             setPos(x(), y()-10);
         }
         else{
-            if(y() < yCollision){
+            if(y() - 5 < yCollision){
                 setPixmap(QPixmap(":/sprites/derriere1.png"));
                 setPos(x(), y()-10);
             }
@@ -90,7 +90,7 @@ void Player::movePlayer()
             setPos(x(), y()+10);
         }
         else{
-            if(y() > yCollision){
+            if(y() > yCollision - 5){
                 setPixmap(QPixmap(":/sprites/devant1.png"));
                 setPos(x(), y()+10);
             }
