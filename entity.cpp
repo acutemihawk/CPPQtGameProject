@@ -12,7 +12,7 @@ Entity::Entity(QString nameParam, int xParam, int yParam, QPixmap spriteParam)
     name = nameParam;
     x = xParam;
     y = yParam;
-    setPos(100,100);
+    setPos(x, y);
     setPixmap(spriteParam);
 }
 

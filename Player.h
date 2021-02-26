@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QMap>
+#include "entity.h"
 
 class Player: public QGraphicsPixmapItem
 {
@@ -13,8 +14,10 @@ class Player: public QGraphicsPixmapItem
         void keyPressEvent(QKeyEvent * event);
         void keyReleaseEvent(QKeyEvent *event);
         void movePlayer();
+        bool isColliding();
     private:
         QMap<int, bool> keys;
+        QMap<int, bool> directionColliding;
 };
 
 #endif // PLAYER_H
