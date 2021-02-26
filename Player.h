@@ -16,6 +16,8 @@ class Player: public QGraphicsPixmapItem
         void movePlayer();
         bool isColliding();
     private:
+        int xCollision;
+        int yCollision;
         QMap<int, bool> keys;
         QMap<int, bool> directionColliding;
 };
