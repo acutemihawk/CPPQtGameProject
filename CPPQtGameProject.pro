@@ -29,3 +29,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32-msvc*{
     LIBS += -luser32
 }
+
+RESOURCES += \
+    ressources/ressources.qrc

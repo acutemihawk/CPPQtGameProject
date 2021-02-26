@@ -5,6 +5,7 @@ Player::Player()
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
+    setPos(0,0);
 }
 
 Player::~Player()

@@ -1,4 +1,5 @@
 #include "game.h"
+#include "entity.h"
 
 Game::Game()
 {
@@ -21,6 +22,8 @@ void Game::startGame()
     view->show();
 
     Player *player = new Player();
+    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/derriere1.png"));
+    scene->addItem(entity1);
 
     scene->addItem(player);
 
