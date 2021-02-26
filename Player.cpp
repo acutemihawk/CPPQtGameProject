@@ -109,7 +109,7 @@ bool Player::isColliding()
     //if one of the colliding items is an Enemy, destroy both the bullet and the enemy
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(Entity)){
-            qDebug("AAAAAAAAAAAAAAAAAAAAIE");
+            qDebug("PUTAIN CA FAIT MAL ENFOIRE");
             // delete them from the heap to save memory
             //delete colliding_items[i];
             //delete this;
