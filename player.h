@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QMap>
+#include <iostream>
 #include "entity.h"
 
 class Player: public QGraphicsPixmapItem
