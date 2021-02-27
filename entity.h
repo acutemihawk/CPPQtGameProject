@@ -4,7 +4,7 @@
 #include <QString>
 #include <QGraphicsPixmapItem>
 
-class Entity
+class Entity : public QGraphicsPixmapItem
 {
     protected:
         QString name;
