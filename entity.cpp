@@ -8,10 +8,12 @@ Entity::Entity()
 
 Entity::Entity(QString nameParam, int xParam, int yParam, QPixmap spriteParam)
 {
+    sprite = spriteParam;
     name = nameParam;
     x = xParam;
     y = yParam;
-    sprite = spriteParam;
+    setPos(x, y);
+    setPixmap(spriteParam);
 }
 
 Entity::~Entity()
