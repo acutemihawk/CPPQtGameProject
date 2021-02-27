@@ -7,10 +7,6 @@ Player::Player()
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     setPos(0,0);
-    directionColliding[68] = false;
-    directionColliding[81] = false;
-    directionColliding[90] = false;
-    directionColliding[83] = false;
 }
 
 Player::~Player()
