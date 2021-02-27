@@ -1,32 +1,25 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QObject>
-#include <QGraphicsItem>
-#include <QPainter>
-#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QKeyEvent>
+#include <QMap>
+#include "entity.h"
 
-#include <windows.h>
-
-class Player : public QObject, public QGraphicsItem
+class Player: public QGraphicsPixmapItem
 {
-    Q_OBJECT
-public:
-    explicit Player(QObject *parent = 0);
-    ~Player();
-
-signals:
-
-public slots:
-    void slotGameTimer();
-
-protected:
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-
-private:
-    qreal angle;
-
+    public:
+        Player();
+        ~Player();
+        void keyPressEvent(QKeyEvent * event);
+        void keyReleaseEvent(QKeyEvent *event);
+        void movePlayer();
+        bool isColliding();
+    private:
+        int xCollision;
+        int yCollision;
+        QMap<int, bool> keys;
+        QMap<int, bool> directionColliding;
 };
 
 #endif // PLAYER_H

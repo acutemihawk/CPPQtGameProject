@@ -1,10 +1,16 @@
-#include "Player.h"
+#include "player.h"
+#include <iostream>
 
-Player::Player(QObject *parent) :
-    QObject(parent), QGraphicsItem()
+Player::Player()
 {
-    angle = 0;
-    setRotation(angle);
+    setPixmap(QPixmap(":/sprites/devant1.png"));
+    setFlag(QGraphicsItem::ItemIsFocusable);
+    setFocus();
+    setPos(0,0);
+    directionColliding[68] = false;
+    directionColliding[81] = false;
+    directionColliding[90] = false;
+    directionColliding[83] = false;
 }
 
 Player::~Player()
@@ -12,56 +18,102 @@ Player::~Player()
 
 }
 
-QRectF Player::boundingRect() const
+void Player::keyPressEvent(QKeyEvent *event)
 {
-    return QRectF(-25,-40,50,80);
+    keys[event->key()] = true;
+    movePlayer();
 }
 
-void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Player::keyReleaseEvent(QKeyEvent *event)
 {
-        QPolygon polygon;
-
-        polygon << QPoint(0,-40) << QPoint(25,40) << QPoint(-25,40);
-        painter->setBrush(Qt::red);
-        painter->drawPolygon(polygon);
-        Q_UNUSED(option);
-        Q_UNUSED(widget);
+    keys[event->key()] = false;
 }
 
-void Player::slotGameTimer()
+void Player::movePlayer()
 {
-    if(GetAsyncKeyState(VK_LEFT)){
-        angle = -90;
-        setRotation(angle);
-        setPos(mapToParent(0, -5));
-    }
-    if(GetAsyncKeyState(VK_RIGHT)){
-        angle = 90;
-        setRotation(angle);
-        setPos(mapToParent(0, -5));
-    }
-    if(GetAsyncKeyState(VK_UP)){
-        angle = 0;
-        setRotation(angle);
-        setPos(mapToParent(0, -5));
-    }
-    if(GetAsyncKeyState(VK_DOWN)){
-        angle = 180;
-        setRotation(angle);
-        setPos(mapToParent(0, -5));
+    if(keys[68] == true) // key D
+    {
+
+        if(isColliding() == false)
+        {
+            setPixmap(QPixmap(":/sprites/droite1.png"));
+            setPos(x()+10, y());
+        }
+        else{
+            if(x() > xCollision - 5){
+                setPixmap(QPixmap(":/sprites/droite1.png"));
+                setPos(x()+10, y());
+            }
+        }
     }
 
-    if(this->x() - 10 < -250){
-        this->setX(-240);       // left
-    }
-    if(this->x() + 10 > 250){
-        this->setX(240);        // right
+    if(keys[81] == true) // key Q
+    {
+
+
+        if(isColliding() == false)
+        {
+            setPixmap(QPixmap(":/sprites/gauche1.png"));
+            setPos(x()-10, y());
+        }
+        else{
+            if(x() - 5 < xCollision){
+                setPixmap(QPixmap(":/sprites/gauche1.png"));
+                setPos(x()-10, y());
+            }
+        }
+
     }
 
-    if(this->y() - 10 < -250){
-        this->setY(-240);       // top
+    if(keys[90] == true) // key Z
+    {
+
+
+        if(isColliding() == false)
+        {
+            setPixmap(QPixmap(":/sprites/derriere1.png"));
+            setPos(x(), y()-10);
+        }
+        else{
+            if(y() - 5 < yCollision){
+                setPixmap(QPixmap(":/sprites/derriere1.png"));
+                setPos(x(), y()-10);
+            }
+        }
     }
-    if(this->y() + 10 > 250){
-        this->setY(240);        // bottom
+
+    if(keys[83] == true) // key S
+    {
+        if(isColliding() == false)
+        {
+            setPixmap(QPixmap(":/sprites/devant1.png"));
+            setPos(x(), y()+10);
+        }
+        else{
+            if(y() > yCollision - 5){
+                setPixmap(QPixmap(":/sprites/devant1.png"));
+                setPos(x(), y()+10);
+            }
+        }
+
     }
+
+
+}
+
+bool Player::isColliding()
+{
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        if (typeid(*(colliding_items[i])) == typeid(Entity)){
+            qDebug("PUTAIN CA FAIT MAL ENFOIRE");
+            //delete colliding_items[i];
+            //delete this;
+            xCollision = colliding_items[i]->pos().x();
+            yCollision = colliding_items[i]->pos().y();
+            return true;
+        }
+    }
+    return false;
 }
