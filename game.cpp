@@ -1,4 +1,5 @@
 #include "game.h"
+#include "entity.h"
 
 Game::Game()
 {
@@ -17,10 +18,12 @@ void Game::startGame()
     view->setBackgroundBrush(QBrush(QImage(":/sprites/bg.png")));
     view->setScene(scene);
     view->setWindowTitle("Zeldo");
-    view->setFixedSize(1280, 720);
+    view->setFixedSize(1300, 990);
     view->show();
 
     Player *player = new Player();
+    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
+    scene->addItem(entity1);
 
     scene->addItem(player);
 
