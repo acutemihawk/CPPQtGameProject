@@ -5,7 +5,7 @@
 #include <QGraphicsRectItem>
 
 #include <QImage>
-#include "player.h"
+#include "Player.h"
 
 class Game
 {
