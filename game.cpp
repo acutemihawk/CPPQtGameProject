@@ -22,13 +22,10 @@ void Game::startGame()
     view->show();
 
     Player *player = new Player();
-    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
-    entity1->boundingRect().setBottom(entity1->getY()+50);
-    entity1->boundingRect().setTop(entity1->getY()-50);
-    entity1->boundingRect().setRight(entity1->getX()+50);
-    entity1->boundingRect().setLeft(entity1->getX()-50);
+    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree2.png"));
     scene->addItem(entity1);
-
+    Entity *entity2 = new Entity("un premier test", 100, 200, QPixmap(":/sprites/tree2.png"));
+    scene->addItem(entity2);
     scene->addItem(player);
 
 

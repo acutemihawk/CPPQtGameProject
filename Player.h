@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QMap>
+#include <QDebug>
 #include "entity.h"
 
 class Player: public QGraphicsPixmapItem
@@ -18,6 +19,8 @@ class Player: public QGraphicsPixmapItem
     private:
         int xCollision;
         int yCollision;
+        int wCollision;
+        int hCollision;
         QMap<int, bool> keys;
 };
 
