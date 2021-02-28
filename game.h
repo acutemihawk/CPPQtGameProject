@@ -3,9 +3,14 @@
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
-
 #include <QImage>
-#include "player.h"
+#include <QIcon>
+#include <QGraphicsDropShadowEffect> // meilleure classe
+#include <QGraphicsBlurEffect>
+#include <QGraphicsOpacityEffect>
+
+#include "entity.h"
+#include "Player.h"
 
 class Game
 {
