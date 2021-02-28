@@ -17,5 +17,8 @@
         <file>gauche2.png</file>
         <file>gauche3.png</file>
         <file>tree.png</file>
+        <file>tree2.png</file>
+        <file>tree3.png</file>
+        <file>icon.png</file>
     </qresource>
 </RCC>

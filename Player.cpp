@@ -1,12 +1,10 @@
-#include "player.h"
-#include <iostream>
+#include "Player.h"
 
 Player::Player()
 {
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
-    setPos(0,0);
 
 }
 
