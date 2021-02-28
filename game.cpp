@@ -25,7 +25,6 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 
 void Game::movePlayer()
 {
-    qDebug("oui");
     if(player->getKeys()[68] == true) // key D
     {
 
