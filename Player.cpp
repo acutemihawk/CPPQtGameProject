@@ -1,4 +1,4 @@
-#include "player.h"
+#include "Player.h"
 #include <iostream>
 
 Player::Player()
@@ -7,10 +7,7 @@ Player::Player()
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     setPos(0,0);
-    directionColliding[68] = false;
-    directionColliding[81] = false;
-    directionColliding[90] = false;
-    directionColliding[83] = false;
+    colliding_items = collidingItems();
 }
 
 Player::~Player()
@@ -18,102 +15,63 @@ Player::~Player()
 
 }
 
-void Player::keyPressEvent(QKeyEvent *event)
+int Player::getXCollision()
 {
-    keys[event->key()] = true;
-    movePlayer();
+    return xCollision;
 }
 
-void Player::keyReleaseEvent(QKeyEvent *event)
+void Player::setXCollision(int value)
 {
-    keys[event->key()] = false;
+    xCollision = value;
 }
 
-void Player::movePlayer()
+int Player::getYCollision()
 {
-    if(keys[68] == true) // key D
-    {
-
-        if(isColliding() == false)
-        {
-            setPixmap(QPixmap(":/sprites/droite1.png"));
-            setPos(x()+10, y());
-        }
-        else{
-            if(x() > xCollision - 5){
-                setPixmap(QPixmap(":/sprites/droite1.png"));
-                setPos(x()+10, y());
-            }
-        }
-    }
-
-    if(keys[81] == true) // key Q
-    {
-
-
-        if(isColliding() == false)
-        {
-            setPixmap(QPixmap(":/sprites/gauche1.png"));
-            setPos(x()-10, y());
-        }
-        else{
-            if(x() - 5 < xCollision){
-                setPixmap(QPixmap(":/sprites/gauche1.png"));
-                setPos(x()-10, y());
-            }
-        }
-
-    }
-
-    if(keys[90] == true) // key Z
-    {
-
-
-        if(isColliding() == false)
-        {
-            setPixmap(QPixmap(":/sprites/derriere1.png"));
-            setPos(x(), y()-10);
-        }
-        else{
-            if(y() - 5 < yCollision){
-                setPixmap(QPixmap(":/sprites/derriere1.png"));
-                setPos(x(), y()-10);
-            }
-        }
-    }
-
-    if(keys[83] == true) // key S
-    {
-        if(isColliding() == false)
-        {
-            setPixmap(QPixmap(":/sprites/devant1.png"));
-            setPos(x(), y()+10);
-        }
-        else{
-            if(y() > yCollision - 5){
-                setPixmap(QPixmap(":/sprites/devant1.png"));
-                setPos(x(), y()+10);
-            }
-        }
-
-    }
-
-
+    return yCollision;
 }
 
-bool Player::isColliding()
+void Player::setYCollision(int value)
 {
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Entity)){
-            qDebug("PUTAIN CA FAIT MAL ENFOIRE");
-            //delete colliding_items[i];
-            //delete this;
-            xCollision = colliding_items[i]->pos().x();
-            yCollision = colliding_items[i]->pos().y();
-            return true;
-        }
-    }
-    return false;
+    yCollision = value;
 }
+
+QMap<int, bool> Player::getKeys()
+{
+    return keys;
+}
+
+void Player::setKeys(QMap<int, bool> &value)
+{
+    keys = value;
+}
+
+void Player::setPixMap(QPixmap pixmap)
+{
+    setPixmap(pixmap);
+}
+
+void Player::setPosition(int x,int y)
+{
+    setPos(x,y);
+}
+
+qreal Player::getX()
+{
+    return x();
+}
+
+qreal Player::getY()
+{
+    return y();
+}
+
+QList<QGraphicsItem *> Player::getColliding_items()
+{
+    return colliding_items;
+}
+
+void Player::setColliding_items(QList<QGraphicsItem *> &value)
+{
+    colliding_items = value;
+}
+

@@ -17,5 +17,6 @@
         <file>gauche2.png</file>
         <file>gauche3.png</file>
         <file>tree.png</file>
+        <file>treelimit.png</file>
     </qresource>
 </RCC>
