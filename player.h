@@ -4,9 +4,10 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QMap>
-#include <QPainter>
+#include <QDebug>
+#include "entity.h"
 
-class Player: public QObject, public QGraphicsPixmapItem
+class Player: public QGraphicsPixmapItem
 {
     public:
         Player();
@@ -14,19 +15,13 @@ class Player: public QObject, public QGraphicsPixmapItem
         void keyPressEvent(QKeyEvent * event);
         void keyReleaseEvent(QKeyEvent *event);
         void movePlayer();
+        bool isColliding();
     private:
+        int xCollision;
+        int yCollision;
+        int wCollision;
+        int hCollision;
         QMap<int, bool> keys;
-        int forwardIterator = 1;
-
-
-        //everything needed form player animations
-        float spriteLine, spriteColumn;
-        int spriteWidth;
-        int spriteHeight;
-
-        QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-        void updateSprite();
 };
 
 #endif // PLAYER_H
