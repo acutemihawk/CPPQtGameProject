@@ -1,6 +1,6 @@
 #include "Player.h"
 #include <iostream>
-
+#include <QDebug>
 Player::Player()
 {
     setPixmap(QPixmap(":/sprites/devant1.png"));
@@ -35,14 +35,14 @@ void Player::setYCollision(int value)
     yCollision = value;
 }
 
-QMap<int, bool> Player::getKeys()
+bool Player::getKeys(int number)
 {
-    return keys;
+    return keys[number];
 }
 
-void Player::setKeys(QMap<int, bool> &value)
+void Player::setKeys(int number, bool value)
 {
-    keys = value;
+    keys[number] = value;
 }
 
 void Player::setPixMap(QPixmap pixmap)

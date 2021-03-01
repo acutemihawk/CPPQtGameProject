@@ -16,8 +16,8 @@ class Player: public QGraphicsPixmapItem
         void setXCollision(int value);
         int getYCollision();
         void setYCollision(int value);
-        QMap<int, bool> getKeys();
-        void setKeys(QMap<int, bool> &value);
+        bool getKeys(int number);
+        void setKeys(int number,bool value);
         void setPixMap(QPixmap pixmap);
         void setPosition(int x,int y);
         qreal getX();

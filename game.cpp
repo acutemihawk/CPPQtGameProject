@@ -14,18 +14,20 @@ Game::~Game()
 
 void Game::keyPressEvent(QKeyEvent *event)
 {
-    player->getKeys()[event->key()] = true;
+    qDebug("touche");
+    player->setKeys(event->key(),true);
     movePlayer();
 }
 
 void Game::keyReleaseEvent(QKeyEvent *event)
 {
-    player->getKeys()[event->key()] = false;
+    qDebug("lache");
+    player->setKeys(event->key(),false);
 }
 
 void Game::movePlayer()
 {
-    if(player->getKeys()[68] == true) // key D
+    if(player->getKeys(68) == true) // key D
     {
 
         if(isColliding() == false)
@@ -41,7 +43,7 @@ void Game::movePlayer()
         }
     }
 
-    if(player->getKeys()[81] == true) // key Q
+    if(player->getKeys(81) == true) // key Q
     {
 
 
@@ -59,7 +61,7 @@ void Game::movePlayer()
 
     }
 
-    if(player->getKeys()[90] == true) // key Z
+    if(player->getKeys(90) == true) // key Z
     {
 
 
@@ -76,7 +78,7 @@ void Game::movePlayer()
         }
     }
 
-    if(player->getKeys()[83] == true) // key S
+    if(player->getKeys(83) == true) // key S
     {
         if(isColliding() == false)
         {
