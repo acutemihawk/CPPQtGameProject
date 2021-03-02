@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
+
 #include <QImage>
 #include <QIcon>
 #include <QGraphicsDropShadowEffect> // meilleure classe
