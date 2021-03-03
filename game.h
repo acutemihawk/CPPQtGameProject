@@ -9,19 +9,32 @@
 #include <QGraphicsDropShadowEffect> // meilleure classe
 #include <QGraphicsBlurEffect>
 #include <QGraphicsOpacityEffect>
+#include <QKeyEvent>
 
 #include "entity.h"
-#include "player.h"
+#include "map.h"
+#include "gate.h"
 
-class Game
+class Game: public QGraphicsPixmapItem
 {
     public:
         Game();
         ~Game();
         void startGame();
-    protected:
-    QGraphicsView *view;
-    QGraphicsScene *scene;
+        void keyPressEvent(QKeyEvent * event);
+        void keyReleaseEvent(QKeyEvent *event);
+        void movePlayer();
+        bool isColliding();
+        void level1();
+        void level2();
+
+    private:
+        Map *map;
+        int xCollision;
+        int yCollision;
+        int wCollision;
+        int hCollision;
+        QMap<int, bool> keys;
 
 };
 

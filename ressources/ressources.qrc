@@ -20,5 +20,7 @@
         <file>character.png</file>
         <file>icon.png</file>
         <file>tree.png</file>
+        <file>character2.png</file>
+        <file>door.PNG</file>
     </qresource>
 </RCC>
