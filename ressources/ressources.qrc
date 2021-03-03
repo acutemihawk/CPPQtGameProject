@@ -18,5 +18,6 @@
         <file>gauche3.png</file>
         <file>tree.png</file>
         <file>icon.png</file>
+        <file>npc.png</file>
     </qresource>
 </RCC>

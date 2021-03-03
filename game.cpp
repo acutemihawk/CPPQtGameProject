@@ -33,6 +33,9 @@ void Game::startGame()
     Tree *tree = new Tree("un arbre de la classe tree", 100, 200);
     scene->addItem(tree);
 
+    Npc *npc = new Npc("maitre yoda", 100,100);
+    scene->addItem(npc);
+
     // player setup
     Player *player = new Player();
     player->setPos(50, 50);

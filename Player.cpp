@@ -112,6 +112,13 @@ bool Player::isColliding()
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
             return true;
+        }else if (typeid(*(colliding_items[i])) == typeid(Npc)){
+            qDebug("collision avec un npc ouch");
+            xCollision = colliding_items[i]->pos().x();
+            yCollision = colliding_items[i]->pos().y();
+            wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
+            hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
+            return true;
         }
     }
     return false;

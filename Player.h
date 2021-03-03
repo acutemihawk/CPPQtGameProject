@@ -7,6 +7,7 @@
 #include <QDebug>
 #include "entity.h"
 #include "tree.h"
+#include "npc.h"
 
 class Player: public QGraphicsPixmapItem
 {
