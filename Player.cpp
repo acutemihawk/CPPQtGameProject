@@ -118,6 +118,8 @@ bool Player::isColliding()
             yCollision = colliding_items[i]->pos().y();
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
+
+            this->setPos(500, 500);
             return true;
         }
     }
