@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
+#include <QGraphicsItem>
 
 #include <QImage>
 #include <QIcon>
@@ -25,6 +26,7 @@ class Game: public QGraphicsPixmapItem
         void keyReleaseEvent(QKeyEvent *event);
         void movePlayer();
         bool isColliding();
+        void clearLevel();
         void level1();
         void level2();
 
