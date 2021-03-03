@@ -162,7 +162,7 @@ bool Game::isColliding()
         else if (typeid(*(colliding_items[i])) == typeid(Gate))
         {
             qDebug("la tpppppppppppppppppppppp");
-
+            clearLevel();
             level2();
             return true;
         }
@@ -180,22 +180,32 @@ void Game::level1()
     map->getScene()->addItem(gate);
     map->getScene()->addItem(entity1);
     map->getScene()->addItem(this);
+    setPos(0, 0);
 }
 
 void Game::level2()
 {
-    for (int i = 0; i < map->getScene()->items().size(); i++){
-        qDebug() << "toi on delete pas i= " << i;
-        qDebug() << "item size" << map->getScene()->items().size();
-        map->getScene()->removeItem(map->getScene()->items()[i]);
-        qDebug("yyyyyyyyyyyyyyyyyyyyyy");
-    }
+
+    map->loadNewBackground(QImage(":/sprites/derriere1.png"));
+    Entity *entity2 = new Entity("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
+    Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.PNG"));
 
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
-    //map->loadNewBackground(QImage(":/sprites/derriere1.png"));
-    Entity *entity1 = new Entity("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
-    map->getScene()->addItem(entity1);
+    map->getScene()->addItem(gate2);
+    map->getScene()->addItem(entity2);
     map->getScene()->addItem(this);
     setPos(100, 500);
+}
+
+void Game::clearLevel()
+{
+    //qDebug() << "objets : " << map->getScene()->items(); // ici on affiche les items qu'il y a dans la map
+    for (int i = 0; i <= map->getScene()->items().size()-1 ; i++)
+    {
+        map->getScene()->removeItem(map->getScene()->items()[0]);
+
+    }
+    map->getScene()->removeItem(map->getScene()->items()[0]);
+    //qDebug() << "objets 2 : " << map->getScene()->items(); // ici on affiche les items qui reste
 }
