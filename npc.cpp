@@ -5,6 +5,10 @@ Npc::Npc()
 
 }
 
+Npc::~Npc()
+{
+
+}
 
 Npc::Npc(QString nameParam, int xParam, int yParam)
 

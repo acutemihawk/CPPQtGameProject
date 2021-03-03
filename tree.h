@@ -8,6 +8,7 @@ class Tree : public Entity
 public:
     Tree();
     Tree(QString nameParam, int xParam, int yParam);
+    ~Tree();
 };
 
 #endif // TREE_H

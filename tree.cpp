@@ -5,8 +5,12 @@ Tree::Tree()
 
 }
 
-Tree::Tree(QString nameParam, int xParam, int yParam)
+Tree::~Tree()
+{
 
+}
+
+Tree::Tree(QString nameParam, int xParam, int yParam)
 {
     setSprite(QPixmap(":/sprites/tree.png"));
     setName(nameParam);
