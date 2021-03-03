@@ -12,12 +12,14 @@ SOURCES += \
     entity.cpp \
     game.cpp \
     main.cpp \
-    player.cpp
+    player.cpp \
+    tree.cpp
 
 HEADERS += \
     entity.h \
     game.h \
-    player.h
+    player.h \
+    tree.h
 
 FORMS +=
 

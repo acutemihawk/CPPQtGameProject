@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QDebug>
 #include "entity.h"
+#include "tree.h"
 
 class Player: public QGraphicsPixmapItem
 {

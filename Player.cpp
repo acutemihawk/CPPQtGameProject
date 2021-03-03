@@ -105,15 +105,12 @@ bool Player::isColliding()
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Entity)){
-            qDebug("PUTAIN CA FAIT MAL ENFOIRE");
-            //delete colliding_items[i];
-            //delete this;
+        if (typeid(*(colliding_items[i])) == typeid(Tree)){
+            qDebug("collision avec un arbre ouch");
             xCollision = colliding_items[i]->pos().x();
             yCollision = colliding_items[i]->pos().y();
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
-
             return true;
         }
     }

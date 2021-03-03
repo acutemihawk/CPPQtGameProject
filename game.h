@@ -11,6 +11,7 @@
 
 #include "entity.h"
 #include "Player.h"
+#include "tree.h"
 
 class Game
 {

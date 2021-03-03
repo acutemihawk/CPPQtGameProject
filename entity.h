@@ -23,7 +23,7 @@ class Entity : public QGraphicsPixmapItem
         int getY();
         void setY(int value);
         QPixmap getSprite();
-        void setSprite(QPixmap &value);
+        void setSprite(QPixmap value);
 };
 
 #endif // ENTITY_H

@@ -30,10 +30,8 @@ void Game::startGame()
     view->show();
 
     // map setup
-    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
-    Entity *entity2 = new Entity("un premier test", 100, 200, QPixmap(":/sprites/tree.png"));
-    scene->addItem(entity1);
-    scene->addItem(entity2);
+    Tree *tree = new Tree("un arbre de la classe tree", 100, 200);
+    scene->addItem(tree);
 
     // player setup
     Player *player = new Player();
