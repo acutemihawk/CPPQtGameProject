@@ -5,11 +5,6 @@ Npc::Npc()
 
 }
 
-Npc::~Npc()
-{
-
-}
-
 Npc::Npc(QString nameParam, int xParam, int yParam)
 
 {
@@ -18,4 +13,9 @@ Npc::Npc(QString nameParam, int xParam, int yParam)
     setX(xParam);
     setY(yParam);
     setPos(x, y);
+}
+
+Npc::~Npc()
+{
+
 }

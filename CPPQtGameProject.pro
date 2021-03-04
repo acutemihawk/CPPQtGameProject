@@ -13,7 +13,9 @@ SOURCES += \
     game.cpp \
     gate.cpp \
     main.cpp \
-    map.cpp
+    map.cpp \
+    npc.cpp \
+    tree.cpp
 
     widget.cpp
 
@@ -21,7 +23,9 @@ HEADERS += \
     entity.h \
     game.h \
     gate.h \
-    map.h
+    map.h \
+    npc.h \
+    tree.h
 
     widget.h
 
