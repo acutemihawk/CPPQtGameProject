@@ -10,7 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     entity.cpp \
-    game.cpp \
+    gamecontroller.cpp \
     gate.cpp \
     main.cpp \
     map.cpp \
@@ -21,7 +21,7 @@ SOURCES += \
 
 HEADERS += \
     entity.h \
-    game.h \
+    gamecontroller.h \
     gate.h \
     map.h \
     npc.h \

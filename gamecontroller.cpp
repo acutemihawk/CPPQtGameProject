@@ -1,27 +1,48 @@
-#include "Player.h"
+#include "gamecontroller.h"
+#include <QDebug>
 
-Player::Player()
+GameController::GameController()
+{
+    map =new Map(QImage(":/sprites/bg.png"));
+    setPixmap(QPixmap(":/sprites/devant1.png"));
+    setFlag(QGraphicsItem::ItemIsFocusable);
+    setFocus();
+    setPos(0,0);
+}
+
+GameController::~GameController()
 {
 
 }
 
-Player::~Player()
+void GameController::startGame()
 {
+    /*QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect();
+    shadow->setYOffset(-5);
 
+    //QGraphicsBlurEffect *blur = new QGraphicsBlurEffect();
+    //blur->setBlurRadius(1.25);
+
+    //QGraphicsOpacityEffect *opa = new QGraphicsOpacityEffect();
+    //opa->setOpacity(0.2);
+
+    player->setGraphicsEffect(shadow);*/
+
+    level1();
 }
 
-void Player::keyPressEvent(QKeyEvent *event)
+void GameController::keyPressEvent(QKeyEvent *event)
 {
     keys[event->key()] = true;
     movePlayer();
 }
 
-void Player::keyReleaseEvent(QKeyEvent *event)
+void GameController::keyReleaseEvent(QKeyEvent *event)
 {
     keys[event->key()] = false;
 }
 
-void Player::movePlayer()
+void GameController::movePlayer()
 {
     if(keys[68] == true) // key D
     {
@@ -97,7 +118,7 @@ void Player::movePlayer()
     }
 }
 
-bool Player::isColliding()
+bool GameController::isColliding()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
@@ -113,6 +134,61 @@ bool Player::isColliding()
 
             return true;
         }
+        else if (typeid(*(colliding_items[i])) == typeid(Gate))
+        {
+            switch((int)colliding_items[i]->zValue())
+            {
+                case 1:
+                    clearLevel();
+                    level1();
+                    break;
+                case 2:
+                    clearLevel();
+                    level2();
+                    break;
+            }
+
+            return true;
+        }
     }
     return false;
+}
+
+void GameController::level1()
+{
+    map->loadNewBackground(QImage(":/sprites/bg.png"));
+    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
+    Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"), 2);
+
+    setFlag(QGraphicsItem::ItemIsFocusable);
+    setFocus();
+    map->getScene()->addItem(gate);
+    map->getScene()->addItem(entity1);
+    map->getScene()->addItem(this);
+    setPos(0, 0);
+}
+
+void GameController::level2()
+{
+
+    map->loadNewBackground(QImage(":/sprites/derriere1.png"));
+    Entity *entity2 = new Entity("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
+    Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.png"), 1);
+
+    setFlag(QGraphicsItem::ItemIsFocusable);
+    setFocus();
+    map->getScene()->addItem(gate2);
+    map->getScene()->addItem(entity2);
+    map->getScene()->addItem(this);
+    setPos(100, 500);
+}
+
+void GameController::clearLevel()
+{
+    //qDebug() << "objets : " << map->getScene()->items(); // ici on affiche les items qu'il y a dans la map
+    while(!map->getScene()->items().isEmpty())
+    {
+        map->getScene()->removeItem(map->getScene()->items()[0]);
+    }
+    //qDebug() << "objets 2 : " << map->getScene()->items(); // ici on affiche les items qui reste
 }

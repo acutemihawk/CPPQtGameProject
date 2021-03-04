@@ -6,9 +6,12 @@
 
 class Gate: public Entity
 {
+    private:
+        int level;
     public:
-        Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam);
+        Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam, int lvl);
         ~Gate();
+        int getLevel();
 };
 
 #endif // GATE_H

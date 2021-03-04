@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAMECONTROLLER_H
+#define GAMECONTROLLER_H
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
@@ -16,11 +16,11 @@
 #include "map.h"
 #include "gate.h"
 
-class Game: public QGraphicsPixmapItem
+class GameController: public QGraphicsPixmapItem
 {
     public:
-        Game();
-        ~Game();
+        GameController();
+        ~GameController();
         void startGame();
         void keyPressEvent(QKeyEvent * event);
         void keyReleaseEvent(QKeyEvent *event);
@@ -40,4 +40,4 @@ class Game: public QGraphicsPixmapItem
 
 };
 
-#endif // GAME_H
+#endif // GAMECONTROLLER_H
