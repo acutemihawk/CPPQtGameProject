@@ -5,7 +5,7 @@ Player::Player()
 {
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
-    setFocus();
+    //setFocus();
     setPos(0,0);
     colliding_items = collidingItems();
 }

@@ -1,6 +1,6 @@
 #include "gate.h"
 
-Gate::Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam,QImage image)
+Gate::Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam, int lvl)
 {
     sprite = spriteParam;
     name = nameParam;
@@ -8,7 +8,8 @@ Gate::Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam,QImage
     y = yParam;
     setPos(x, y);
     setPixmap(spriteParam);
-    imageNewMap=image;
+    level = lvl;
+    setZValue(level);
 }
 
 Gate::~Gate()
@@ -16,12 +17,7 @@ Gate::~Gate()
 
 }
 
-QImage Gate::getImageNewMap()
+int Gate::getLevel()
 {
-    return imageNewMap;
-}
-
-void Gate::setImageNewMap(QImage image)
-{
-    imageNewMap = image;
+    return level;
 }

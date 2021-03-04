@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include <QGraphicsView>
+#include <QIcon>
 
 class Map
 {

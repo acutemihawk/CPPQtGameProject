@@ -6,13 +6,12 @@
 
 class Gate: public Entity
 {
-    private :
-        QImage imageNewMap;
+    private:
+        int level;
     public:
-        Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam,QImage image);
+        Gate(QString nameParam, int xParam, int yParam, QPixmap spriteParam, int lvl);
         ~Gate();
-        QImage getImageNewMap();
-        void setImageNewMap(QImage image);
+        int getLevel();
 };
 
 #endif // GATE_H

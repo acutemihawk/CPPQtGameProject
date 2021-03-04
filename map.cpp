@@ -4,13 +4,21 @@ Map::Map(QImage image)
 {
     view = new QGraphicsView();
     scene = new QGraphicsScene();
-    view->setBackgroundBrush(QBrush(image));
-    view->setScene(scene);
+
+    // window settup
+    view->setWindowIcon(QIcon(":/sprites/icon.png"));
     view->setWindowTitle("Zeldo");
-    view->setFixedSize(1280, 720);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(1280, 720);
+
+    // in-game window setup
+    view->setBackgroundBrush(QBrush(QImage(":/sprites/bg.png")));
+    view->setSceneRect(0, 0, 1280, 720);
+    scene->setStickyFocus(true);
+    view->setScene(scene);
     view->show();
+
 }
 
 Map::~Map()
@@ -36,12 +44,10 @@ void Map::setView(QGraphicsView *newValue)
 
 QGraphicsScene *Map::getScene()
 {
-    return scene;
+    return view->scene();
 }
 
 void Map::setScene(QGraphicsScene *newValue)
 {
-    scene = newValue;
+    view->setScene(newValue);
 }
-
-
