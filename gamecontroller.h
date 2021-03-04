@@ -37,6 +37,7 @@ class GameController: public QGraphicsPixmapItem
         int wCollision;
         int hCollision;
         QMap<int, bool> keys;
+        int lastDirection; // 1 = devant 2 = gauche 3 = derrière 4 = droite
 
 };
 

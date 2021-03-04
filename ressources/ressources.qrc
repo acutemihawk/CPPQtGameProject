@@ -22,5 +22,9 @@
         <file>tree.png</file>
         <file>character2.png</file>
         <file>door.png</file>
+        <file>epeederriere.png</file>
+        <file>epeedevant.png</file>
+        <file>epeedroite.png</file>
+        <file>epeegauche.png</file>
     </qresource>
 </RCC>

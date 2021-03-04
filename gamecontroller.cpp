@@ -3,6 +3,7 @@
 
 GameController::GameController()
 {
+    lastDirection = 1;
     map =new Map(QImage(":/sprites/bg.png"));
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
@@ -44,7 +45,7 @@ void GameController::keyReleaseEvent(QKeyEvent *event)
 
 void GameController::movePlayer()
 {
-    if(keys[68] == true) // key D
+    if(keys[68] == true || keys[39] == true) // key D
     {
         if(isColliding() == false)
         {
@@ -60,9 +61,10 @@ void GameController::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/droite1.png"));
         }
+        lastDirection = 4;
     }
 
-    if(keys[81] == true) // key Q
+    if(keys[81] == true || keys[37] == true) // key Q
     {
         if(isColliding() == false)
         {
@@ -78,10 +80,10 @@ void GameController::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/gauche1.png"));
         }
-
+        lastDirection = 2;
     }
 
-    if(keys[90] == true) // key Z
+    if(keys[90] == true || keys[38] == true) // key Z
     {
         if(isColliding() == false)
         {
@@ -97,9 +99,10 @@ void GameController::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/derriere1.png"));
         }
+        lastDirection = 3;
     }
 
-    if(keys[83] == true) // key S
+    if(keys[83] == true || keys[40] == true) // key S
     {
         if(isColliding() == false)
         {
@@ -114,6 +117,26 @@ void GameController::movePlayer()
             }
             else
                 setPixmap(QPixmap(":/sprites/devant1.png"));
+        }
+        lastDirection = 1;
+    }
+
+    if(keys[32] == true) // key spacebar
+    {
+        switch(lastDirection)
+        {
+            case 1:
+                setPixmap(QPixmap(":/sprites/epeedevant.png"));
+                break;
+            case 2:
+                setPixmap(QPixmap(":/sprites/epeegauche.png"));
+                break;
+            case 3:
+                setPixmap(QPixmap(":/sprites/epeederriere.png"));
+                break;
+            case 4:
+                setPixmap(QPixmap(":/sprites/epeedroite.png"));
+                break;
         }
     }
 }
