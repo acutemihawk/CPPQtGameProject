@@ -201,11 +201,15 @@ void Game::level2()
 void Game::clearLevel()
 {
     //qDebug() << "objets : " << map->getScene()->items(); // ici on affiche les items qu'il y a dans la map
-    for (int i = 0; i <= map->getScene()->items().size()-1 ; i++)
+    /*for (int i = 0; i < map->getScene()->items().size() ; i++)
     {
         map->getScene()->removeItem(map->getScene()->items()[0]);
 
     }
-    map->getScene()->removeItem(map->getScene()->items()[0]);
+    map->getScene()->removeItem(map->getScene()->items()[0]);*/
+    while(!map->getScene()->items().isEmpty())
+    {
+        map->getScene()->removeItem(map->getScene()->items()[0]);
+    }
     //qDebug() << "objets 2 : " << map->getScene()->items(); // ici on affiche les items qui reste
 }
