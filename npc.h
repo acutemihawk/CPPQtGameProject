@@ -7,7 +7,7 @@ class Npc : public Entity
 {
 public:
     Npc();
-    Npc(QString nameParam, int xParam, int yParam);
+    Npc(QString nameParam, int xParam, int yParam, QPixmap spriteParam);
     ~Npc();
 };
 

@@ -58,5 +58,5 @@ QPixmap Entity::getSprite()
 
 void Entity::setSprite(QPixmap value)
 {
-    setPixmap(value);
+    sprite = value;
 }

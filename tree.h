@@ -7,7 +7,7 @@ class Tree : public Entity
 {
 public:
     Tree();
-    Tree(QString nameParam, int xParam, int yParam);
+    Tree(QString nameParam, int xParam, int yParam, QPixmap spriteParam);
     ~Tree();
 };
 

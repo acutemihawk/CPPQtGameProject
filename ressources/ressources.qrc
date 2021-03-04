@@ -1,14 +1,14 @@
 <RCC>
     <qresource prefix="/sprites">
         <file>bg.png</file>
-        <file>derriere1.png</file>
-        <file>derriere2.png</file>
-        <file>derriere3.png</file>
-        <file>derriere4.png</file>
         <file>devant1.png</file>
         <file>devant2.png</file>
         <file>devant3.png</file>
         <file>devant4.png</file>
+        <file>derriere1.png</file>
+        <file>derriere2.png</file>
+        <file>derriere3.png</file>
+        <file>derriere4.png</file>
         <file>droite1.png</file>
         <file>droite2.png</file>
         <file>droite3.png</file>
@@ -16,8 +16,15 @@
         <file>gauche1.png</file>
         <file>gauche2.png</file>
         <file>gauche3.png</file>
-        <file>tree.png</file>
+        <file>gauche4.png</file>
+        <file>character.png</file>
         <file>icon.png</file>
-        <file>npc.png</file>
+        <file>tree.png</file>
+        <file>character2.png</file>
+        <file>door.png</file>
+        <file>epeederriere.png</file>
+        <file>epeedevant.png</file>
+        <file>epeedroite.png</file>
+        <file>epeegauche.png</file>
     </qresource>
 </RCC>

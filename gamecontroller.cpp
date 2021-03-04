@@ -1,8 +1,9 @@
-#include "game.h"
+#include "gamecontroller.h"
 #include <QDebug>
 
-Game::Game()
+GameController::GameController()
 {
+    lastDirection = 1;
     map =new Map(QImage(":/sprites/bg.png"));
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
@@ -10,39 +11,14 @@ Game::Game()
     setPos(0,0);
 }
 
-Game::~Game()
+GameController::~GameController()
 {
 
 }
 
-void Game::startGame()
+void GameController::startGame()
 {
-    /*// window settup
-    view->setWindowIcon(QIcon(":/sprites/icon.png"));
-    view->setWindowTitle("Zeldo");
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(600, 600);
-
-    // in-game window setup
-    view->setBackgroundBrush(QBrush(QImage(":/sprites/bg.png")));
-    view->setSceneRect(0, 0, 600, 600);
-    scene->setStickyFocus(true);
-    view->setScene(scene);
-    view->show();
-
-    // map setup
-    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
-    Entity *entity2 = new Entity("un premier test", 100, 200, QPixmap(":/sprites/tree.png"));
-    scene->addItem(entity1);
-    scene->addItem(entity2);
-
-    // player setup
-    Player *player = new Player();
-    player->setPos(50, 50);
-    scene->addItem(player);
-
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect();
+    /*QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect();
     shadow->setYOffset(-5);
 
     //QGraphicsBlurEffect *blur = new QGraphicsBlurEffect();
@@ -56,20 +32,20 @@ void Game::startGame()
     level1();
 }
 
-void Game::keyPressEvent(QKeyEvent *event)
+void GameController::keyPressEvent(QKeyEvent *event)
 {
     keys[event->key()] = true;
     movePlayer();
 }
 
-void Game::keyReleaseEvent(QKeyEvent *event)
+void GameController::keyReleaseEvent(QKeyEvent *event)
 {
     keys[event->key()] = false;
 }
 
-void Game::movePlayer()
+void GameController::movePlayer()
 {
-    if(keys[68] == true) // key D
+    if(keys[68] == true || keys[39] == true) // key D
     {
         if(isColliding() == false)
         {
@@ -85,9 +61,10 @@ void Game::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/droite1.png"));
         }
+        lastDirection = 4;
     }
 
-    if(keys[81] == true) // key Q
+    if(keys[81] == true || keys[37] == true) // key Q
     {
         if(isColliding() == false)
         {
@@ -103,10 +80,10 @@ void Game::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/gauche1.png"));
         }
-
+        lastDirection = 2;
     }
 
-    if(keys[90] == true) // key Z
+    if(keys[90] == true || keys[38] == true) // key Z
     {
         if(isColliding() == false)
         {
@@ -122,9 +99,10 @@ void Game::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/derriere1.png"));
         }
+        lastDirection = 3;
     }
 
-    if(keys[83] == true) // key S
+    if(keys[83] == true || keys[40] == true) // key S
     {
         if(isColliding() == false)
         {
@@ -140,15 +118,35 @@ void Game::movePlayer()
             else
                 setPixmap(QPixmap(":/sprites/devant1.png"));
         }
+        lastDirection = 1;
+    }
+
+    if(keys[32] == true) // key spacebar
+    {
+        switch(lastDirection)
+        {
+            case 1:
+                setPixmap(QPixmap(":/sprites/epeedevant.png"));
+                break;
+            case 2:
+                setPixmap(QPixmap(":/sprites/epeegauche.png"));
+                break;
+            case 3:
+                setPixmap(QPixmap(":/sprites/epeederriere.png"));
+                break;
+            case 4:
+                setPixmap(QPixmap(":/sprites/epeedroite.png"));
+                break;
+        }
     }
 }
 
-bool Game::isColliding()
+bool GameController::isColliding()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Entity)){
+        if (typeid(*(colliding_items[i])) == typeid(Tree)){
             qDebug("PUTAIN CA FAIT MAL ENFOIRE");
             xCollision = colliding_items[i]->pos().x();
             yCollision = colliding_items[i]->pos().y();
@@ -159,35 +157,48 @@ bool Game::isColliding()
         }
         else if (typeid(*(colliding_items[i])) == typeid(Gate))
         {
-            qDebug("téléportation");
-            clearLevel();
-            level2();
+            switch((int)colliding_items[i]->zValue())
+            {
+                case 1:
+                    clearLevel();
+                    level1();
+                    break;
+                case 2:
+                    clearLevel();
+                    level2();
+                    break;
+            }
+
             return true;
         }
     }
     return false;
 }
 
-void Game::level1()
+void GameController::level1()
 {
-    Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
-    Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"));
+    map->loadNewBackground(QImage(":/sprites/bg.png"));
+    //Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
+    Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"), 2);
+    Tree *tree = new Tree("arbre", 400, 400, QPixmap(":sprites/tree.png"));
+
+
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     map->getScene()->addItem(gate);
-    map->getScene()->addItem(entity1);
+    //map->getScene()->addItem(entity1);
+    map->getScene()->addItem(tree);
     map->getScene()->addItem(this);
     setPos(0, 0);
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect();
-    shadow->setYOffset(-5);
-    setGraphicsEffect(shadow);
 }
 
-void Game::level2()
+void GameController::level2()
 {
+
     map->loadNewBackground(QImage(":/sprites/derriere1.png"));
     Entity *entity2 = new Entity("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
-    Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.png"));
+    Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.png"), 1);
+
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     map->getScene()->addItem(gate2);
@@ -196,11 +207,12 @@ void Game::level2()
     setPos(100, 500);
 }
 
-void Game::clearLevel()
+void GameController::clearLevel()
 {
-    for (int i = 0; i <= map->getScene()->items().size()-1 ; i++)
+    //qDebug() << "objets : " << map->getScene()->items(); // ici on affiche les items qu'il y a dans la map
+    while(!map->getScene()->items().isEmpty())
     {
         map->getScene()->removeItem(map->getScene()->items()[0]);
     }
-    map->getScene()->removeItem(map->getScene()->items()[0]);
+    //qDebug() << "objets 2 : " << map->getScene()->items(); // ici on affiche les items qui reste
 }
