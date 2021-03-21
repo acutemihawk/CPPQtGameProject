@@ -141,7 +141,6 @@ void GameController::movePlayer()
                 setPixmap(QPixmap(":/sprites/epeedroite.png"));
                 break;
         }
-       //dialog->hide();
     }
 
     if(keys[Qt::Key_H] == true) // h to close the dialog
@@ -155,7 +154,6 @@ bool GameController::isColliding()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
-
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(Tree)){
             qDebug("PUTAIN CA FAIT MAL ENFOIRE");
@@ -163,8 +161,8 @@ bool GameController::isColliding()
             yCollision = colliding_items[i]->pos().y();
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
-
             dialog->show();
+
             return true;
         }
         else if (typeid(*(colliding_items[i])) == typeid(Gate))
