@@ -5,6 +5,11 @@ Dialog::Dialog()
 
 }
 
+Dialog::Dialog(QString script)
+{
+    setScript(script);
+}
+
 QRectF Dialog::boundingRect() const
 {
     return QRectF(50, 500, 500, 90);
@@ -21,9 +26,19 @@ void Dialog::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     QRectF rectInside = QRectF(90, 505, 400, 80);
     painter->drawRect(rectInside);
     painter->fillRect(rectInside, Qt::white);
-    painter->drawText(rectInside, Qt::AlignCenter, "Je suis injouable !");
+    painter->drawText(rectInside, Qt::AlignCenter, getScript());
 }
 
 Dialog::~Dialog()
 {
+}
+
+void Dialog::setScript(QString npcScript)
+{
+    this->npcScript = npcScript;
+}
+
+QString Dialog::getScript()
+{
+    return npcScript;
 }

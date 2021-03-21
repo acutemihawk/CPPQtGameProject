@@ -9,7 +9,7 @@ GameController::GameController()
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     setPos(0,0);
-    dialog = new Dialog();
+    dialog = new Dialog("BORDEL C'EST PAS PARCE QUE JE SUIS UN ARBRE QUE TU DOIS ME RENTRER DEDANS!");
     map->getScene()->addItem(dialog);
     dialog->hide();
 }
