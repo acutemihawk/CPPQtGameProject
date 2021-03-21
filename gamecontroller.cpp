@@ -9,9 +9,8 @@ GameController::GameController()
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     setPos(0,0);
-    dialog = new Dialog("BORDEL C'EST PAS PARCE QUE JE SUIS UN ARBRE QUE TU DOIS ME RENTRER DEDANS!");
-    map->getScene()->addItem(dialog);
-    dialog->hide();
+    dialog = new Dialog("BORDEL C'EST PAS PARCE QUE JE SUIS UN ARBRE QUE TU DOIS \n ME RENTRER DEDANS!");
+
 }
 
 GameController::~GameController()
@@ -143,7 +142,7 @@ void GameController::movePlayer()
         }
     }
 
-    if(keys[Qt::Key_H] == true) // h to close the dialog
+    if(keys[Qt::Key_Escape] == true) // escape key to close the dialog
     {
         dialog->hide();
     }
@@ -191,6 +190,9 @@ void GameController::level1()
     //Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
     Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"), 2);
     Tree *tree = new Tree("arbre", 400, 300, QPixmap(":sprites/tree.png"));
+
+    map->getScene()->addItem(dialog);
+    dialog->hide();
 
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();

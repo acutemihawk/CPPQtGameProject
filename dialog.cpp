@@ -2,7 +2,6 @@
 
 Dialog::Dialog()
 {
-
 }
 
 Dialog::Dialog(QString script)
@@ -24,9 +23,10 @@ void Dialog::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     painter->fillRect(rect, Qt::blue);
 
     QRectF rectInside = QRectF(90, 505, 400, 80);
+
     painter->drawRect(rectInside);
     painter->fillRect(rectInside, Qt::white);
-    painter->drawText(rectInside, Qt::AlignCenter, getScript());
+    painter->drawText(rectInside, Qt::AlignLeft, getScript());
 }
 
 Dialog::~Dialog()
