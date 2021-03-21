@@ -9,6 +9,9 @@ GameController::GameController()
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     setPos(0,0);
+    dialog = new Dialog();
+    map->getScene()->addItem(dialog);
+    dialog->hide();
 }
 
 GameController::~GameController()
@@ -138,12 +141,20 @@ void GameController::movePlayer()
                 setPixmap(QPixmap(":/sprites/epeedroite.png"));
                 break;
         }
+       //dialog->hide();
     }
+
+    if(keys[Qt::Key_H] == true) // h to close the dialog
+    {
+        dialog->hide();
+    }
+
 }
 
 bool GameController::isColliding()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
+
 
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(Tree)){
@@ -153,6 +164,7 @@ bool GameController::isColliding()
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
 
+            dialog->show();
             return true;
         }
         else if (typeid(*(colliding_items[i])) == typeid(Gate))
@@ -180,12 +192,12 @@ void GameController::level1()
     map->loadNewBackground(QImage(":/sprites/bg.png"));
     //Entity *entity1 = new Entity("un premier test", 100, 100, QPixmap(":/sprites/tree.png"));
     Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"), 2);
-    Tree *tree = new Tree("arbre", 400, 400, QPixmap(":sprites/tree.png"));
-
+    Tree *tree = new Tree("arbre", 400, 300, QPixmap(":sprites/tree.png"));
 
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     map->getScene()->addItem(gate);
+
     //map->getScene()->addItem(entity1);
     map->getScene()->addItem(tree);
     map->getScene()->addItem(this);
@@ -196,13 +208,15 @@ void GameController::level2()
 {
 
     map->loadNewBackground(QImage(":/sprites/derriere1.png"));
-    Entity *entity2 = new Entity("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
+    Tree *tree2 = new Tree("un premier test", 200, 200, QPixmap(":/sprites/tree.png"));
     Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.png"), 1);
+    map->getScene()->addItem(dialog);
+    dialog->hide();
 
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     map->getScene()->addItem(gate2);
-    map->getScene()->addItem(entity2);
+    map->getScene()->addItem(tree2);
     map->getScene()->addItem(this);
     setPos(100, 500);
 }
