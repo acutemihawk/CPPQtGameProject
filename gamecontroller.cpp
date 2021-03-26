@@ -8,7 +8,7 @@ GameController::GameController()
     setPixmap(QPixmap(":/sprites/devant1.png"));
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
-    setPos(0,0);
+    dialog = new Dialog("Un arbre qui parle on sait pas pourquoi : \n BORDEL C'EST PAS PARCE QUE JE SUIS UN ARBRE QUE TU DOIS \n ME RENTRER DEDANS!");
 }
 
 GameController::~GameController()
@@ -139,6 +139,10 @@ void GameController::movePlayer()
                 break;
         }
     }
+    if(keys[Qt::Key_Escape] == true) // escape key to close the dialog
+        {
+            dialog->hide();
+        }
 }
 
 bool GameController::isColliding()
@@ -148,12 +152,11 @@ bool GameController::isColliding()
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(Tree)){
             qDebug("PUTAIN CA FAIT MAL ENFOIRE");
-            //delete colliding_items[i];
-            //delete this;
             xCollision = colliding_items[i]->pos().x();
             yCollision = colliding_items[i]->pos().y();
             wCollision = colliding_items[i]->pos().x() + colliding_items[i]->sceneBoundingRect().width();
             hCollision = colliding_items[i]->pos().y() + colliding_items[i]->sceneBoundingRect().height();
+            dialog->show();
 
             return true;
         }
@@ -184,30 +187,172 @@ bool GameController::isColliding()
 void GameController::level1()
 {
     map->loadNewBackground(QImage(":/sprites/bg.png"));
-    Tree *tree1 = new Tree("un premier test", 100, 100,QPixmap(":/sprites/tree.png"));
+    Tree *tree1 = new Tree("un premier test", 0, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree2 = new Tree("un premier test", 75, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree3 = new Tree("un premier test", 150, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree4 = new Tree("un premier test", 225, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree5 = new Tree("un premier test", 300, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree6 = new Tree("un premier test", 375, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree7 = new Tree("un premier test", 450, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree8 = new Tree("un premier test", 525, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree9 = new Tree("un premier test", 600, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree10 = new Tree("un premier test", 0, 75,QPixmap(":/sprites/tree.png"));
+    Tree *tree11 = new Tree("un premier test", 0,150,QPixmap(":/sprites/tree.png"));
+    Tree *tree12= new Tree("un premier test", 0, 225,QPixmap(":/sprites/tree.png"));
+    Tree *tree13= new Tree("un premier test", 0, 300,QPixmap(":/sprites/tree.png"));
+    Tree *tree14= new Tree("un premier test", 0, 375,QPixmap(":/sprites/tree.png"));
+    Tree *tree15= new Tree("un premier test", 0, 450,QPixmap(":/sprites/tree.png"));
+    Tree *tree16= new Tree("un premier test", 0, 525,QPixmap(":/sprites/tree.png"));
+    Tree *tree17= new Tree("un premier test", 0, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree18 = new Tree("un premier test", 600, 75,QPixmap(":/sprites/tree.png"));
+    Tree *tree19 = new Tree("un premier test", 600,150,QPixmap(":/sprites/tree.png"));
+    Tree *tree20= new Tree("un premier test", 600, 225,QPixmap(":/sprites/tree.png"));
+    Tree *tree21= new Tree("un premier test", 600, 300,QPixmap(":/sprites/tree.png"));
+    Tree *tree22= new Tree("un premier test", 600, 375,QPixmap(":/sprites/tree.png"));
+    Tree *tree23= new Tree("un premier test", 600, 450,QPixmap(":/sprites/tree.png"));
+    Tree *tree24= new Tree("un premier test", 600, 525,QPixmap(":/sprites/tree.png"));
+    Tree *tree25= new Tree("un premier test", 600, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree26 = new Tree("un premier test", 600, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree27= new Tree("un premier test", 75, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree28 = new Tree("un premier test", 150,600,QPixmap(":/sprites/tree.png"));
+    Tree *tree29= new Tree("un premier test", 225, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree30= new Tree("un premier test", 300, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree31= new Tree("un premier test", 375, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree32= new Tree("un premier test", 450, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree33= new Tree("un premier test", 525, 600,QPixmap(":/sprites/tree.png"));
+
     Gate *gate = new Gate("gate_grass", 100, 200, QPixmap(":/sprites/door.png"),2);
     Monster *monster1=new Monster("Godzilla", 300,300,QPixmap(":/sprites/monstre.png"),30);
-
+    map->getScene()->addItem(dialog);
+    dialog->hide();
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
-    map->getScene()->addItem(gate);
+
+
+
+
+    //Limite de la map avec des arbres
     map->getScene()->addItem(tree1);
+    map->getScene()->addItem(tree2);
+    map->getScene()->addItem(tree3);
+    map->getScene()->addItem(tree4);
+    map->getScene()->addItem(tree5);
+    map->getScene()->addItem(tree6);
+    map->getScene()->addItem(tree7);
+    map->getScene()->addItem(tree8);
+    map->getScene()->addItem(tree9);
+    map->getScene()->addItem(tree10);
+    map->getScene()->addItem(tree11);
+    map->getScene()->addItem(tree12);
+    map->getScene()->addItem(tree13);
+    map->getScene()->addItem(tree14);
+    map->getScene()->addItem(tree15);
+    map->getScene()->addItem(tree16);
+    map->getScene()->addItem(tree17);
+    map->getScene()->addItem(tree18);
+    map->getScene()->addItem(tree19);
+    map->getScene()->addItem(tree20);
+    map->getScene()->addItem(tree21);
+    map->getScene()->addItem(tree22);
+    map->getScene()->addItem(tree23);
+    map->getScene()->addItem(tree24);
+    map->getScene()->addItem(tree25);
+    map->getScene()->addItem(tree26);
+    map->getScene()->addItem(tree27);
+    map->getScene()->addItem(tree28);
+    map->getScene()->addItem(tree29);
+    map->getScene()->addItem(tree30);
+    map->getScene()->addItem(tree31);
+    map->getScene()->addItem(tree32);
+    map->getScene()->addItem(tree33);
+
+
+    map->getScene()->addItem(gate);
     map->getScene()->addItem(monster1);
     map->getScene()->addItem(this);
-    setPos(0, 0);
+    setPos(500, 500);
 }
 
 void GameController::level2()
 {
 
-    map->loadNewBackground(QImage(":/sprites/derriere1.png"));
-    Tree *tree2 = new Tree("un premier test", 200, 200,QPixmap(":/sprites/tree.png"));
+    map->loadNewBackground(QImage(":/sprites/bg.png"));
+    Tree *tree1 = new Tree("un premier test", 0, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree2 = new Tree("un premier test", 75, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree3 = new Tree("un premier test", 150, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree4 = new Tree("un premier test", 225, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree5 = new Tree("un premier test", 300, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree6 = new Tree("un premier test", 375, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree7 = new Tree("un premier test", 450, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree8 = new Tree("un premier test", 525, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree9 = new Tree("un premier test", 600, 0,QPixmap(":/sprites/tree.png"));
+    Tree *tree10 = new Tree("un premier test", 0, 75,QPixmap(":/sprites/tree.png"));
+    Tree *tree11 = new Tree("un premier test", 0,150,QPixmap(":/sprites/tree.png"));
+    Tree *tree12= new Tree("un premier test", 0, 225,QPixmap(":/sprites/tree.png"));
+    Tree *tree13= new Tree("un premier test", 0, 300,QPixmap(":/sprites/tree.png"));
+    Tree *tree14= new Tree("un premier test", 0, 375,QPixmap(":/sprites/tree.png"));
+    Tree *tree15= new Tree("un premier test", 0, 450,QPixmap(":/sprites/tree.png"));
+    Tree *tree16= new Tree("un premier test", 0, 525,QPixmap(":/sprites/tree.png"));
+    Tree *tree17= new Tree("un premier test", 0, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree18 = new Tree("un premier test", 600, 75,QPixmap(":/sprites/tree.png"));
+    Tree *tree19 = new Tree("un premier test", 600,150,QPixmap(":/sprites/tree.png"));
+    Tree *tree20= new Tree("un premier test", 600, 225,QPixmap(":/sprites/tree.png"));
+    Tree *tree21= new Tree("un premier test", 600, 300,QPixmap(":/sprites/tree.png"));
+    Tree *tree22= new Tree("un premier test", 600, 375,QPixmap(":/sprites/tree.png"));
+    Tree *tree23= new Tree("un premier test", 600, 450,QPixmap(":/sprites/tree.png"));
+    Tree *tree24= new Tree("un premier test", 600, 525,QPixmap(":/sprites/tree.png"));
+    Tree *tree25= new Tree("un premier test", 600, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree26 = new Tree("un premier test", 600, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree27= new Tree("un premier test", 75, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree28 = new Tree("un premier test", 150,600,QPixmap(":/sprites/tree.png"));
+    Tree *tree29= new Tree("un premier test", 225, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree30= new Tree("un premier test", 300, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree31= new Tree("un premier test", 375, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree32= new Tree("un premier test", 450, 600,QPixmap(":/sprites/tree.png"));
+    Tree *tree33= new Tree("un premier test", 525, 600,QPixmap(":/sprites/tree.png"));
     Gate *gate2 = new Gate("gate_grass", 400, 200, QPixmap(":/sprites/door.png"), 1);
 
+    map->getScene()->addItem(dialog);
+    dialog->hide();
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
-    map->getScene()->addItem(gate2);
+
+    //Limite de la map avec des arbres
+    map->getScene()->addItem(tree1);
     map->getScene()->addItem(tree2);
+    map->getScene()->addItem(tree3);
+    map->getScene()->addItem(tree4);
+    map->getScene()->addItem(tree5);
+    map->getScene()->addItem(tree6);
+    map->getScene()->addItem(tree7);
+    map->getScene()->addItem(tree8);
+    map->getScene()->addItem(tree9);
+    map->getScene()->addItem(tree10);
+    map->getScene()->addItem(tree11);
+    map->getScene()->addItem(tree12);
+    map->getScene()->addItem(tree13);
+    map->getScene()->addItem(tree14);
+    map->getScene()->addItem(tree15);
+    map->getScene()->addItem(tree16);
+    map->getScene()->addItem(tree17);
+    map->getScene()->addItem(tree18);
+    map->getScene()->addItem(tree19);
+    map->getScene()->addItem(tree20);
+    map->getScene()->addItem(tree21);
+    map->getScene()->addItem(tree22);
+    map->getScene()->addItem(tree23);
+    map->getScene()->addItem(tree24);
+    map->getScene()->addItem(tree25);
+    map->getScene()->addItem(tree26);
+    map->getScene()->addItem(tree27);
+    map->getScene()->addItem(tree28);
+    map->getScene()->addItem(tree29);
+    map->getScene()->addItem(tree30);
+    map->getScene()->addItem(tree31);
+    map->getScene()->addItem(tree32);
+    map->getScene()->addItem(tree33);
+
+    map->getScene()->addItem(gate2);
     map->getScene()->addItem(this);
     setPos(100, 500);
 }
