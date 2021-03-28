@@ -26,5 +26,11 @@
         <file>epeedevant.png</file>
         <file>epeedroite.png</file>
         <file>epeegauche.png</file>
+        <file>monstre.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>soliloquy.wav</file>
+        <file>step_grass.wav</file>
+        <file>teleport.wav</file>
     </qresource>
 </RCC>

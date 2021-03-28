@@ -10,11 +10,11 @@ Map::Map(QImage image)
     view->setWindowTitle("Zeldo");
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(600, 600);
+    view->setFixedSize(1200, 700);
 
     // in-game window setup
     view->setBackgroundBrush(QBrush(QImage(":/sprites/bg.png")));
-    view->setSceneRect(0, 0, 600, 600);
+    view->setSceneRect(0, 0, 1200, 700);
     scene->setStickyFocus(true);
     view->setScene(scene);
     view->show();

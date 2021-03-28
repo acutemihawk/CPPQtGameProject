@@ -11,10 +11,14 @@
 #include <QGraphicsBlurEffect>
 #include <QGraphicsOpacityEffect>
 #include <QKeyEvent>
+#include <QMediaPlayer>
 
 #include "entity.h"
 #include "map.h"
 #include "gate.h"
+#include "tree.h"
+#include "monster.h"
+#include "dialog.h"
 
 class GameController: public QGraphicsPixmapItem
 {
@@ -38,6 +42,9 @@ class GameController: public QGraphicsPixmapItem
         int hCollision;
         QMap<int, bool> keys;
         int lastDirection; // 1 = devant 2 = gauche 3 = derrière 4 = droite
+        Dialog *dialog; //la boite de dialogue des pnj
+        QMediaPlayer * music;
+        QMediaPlayer * musicEffect;
 
 };
 

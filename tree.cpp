@@ -7,7 +7,7 @@ Tree::Tree()
 
 Tree::Tree(QString nameParam, int xParam, int yParam)
 {
-    setSprite(QPixmap(":/sprites/tree.png"));
+    setPixmap(QPixmap(":/sprites/tree.png"));
     setName(nameParam);
     setX(xParam);
     setY(yParam);
